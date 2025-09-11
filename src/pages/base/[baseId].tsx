@@ -11,14 +11,14 @@ import { useEffect } from "react";
 
 // --- React Icons ---
 import {
-  FiBox, FiChevronDown, FiClock, FiPlus, FiGrid, FiSearch, FiSettings,
+  FiBox, FiChevronDown, FiClock, FiPlus, FiGrid, FiSearch,
   FiFilter, FiEyeOff, FiArrowDown, FiShare2, FiMoreHorizontal,
   FiFileText, FiUser, FiCircle, FiPaperclip, FiHash, FiList,
   FiTrash2
 } from "react-icons/fi";
 
 // --- A map to easily retrieve icon components by name ---
-const iconMap: { [key: string]: IconType } = {
+const iconMap: Record<string, IconType> = {
   TEXT: FiFileText,
   NUMBER: FiHash,
   USER: FiUser,
@@ -53,7 +53,7 @@ export default function BasePage() {
     isLoading: isLoadingTable,
     isError: isTableError 
   } = api.table.getById.useQuery(
-    { id: tableId as string },
+    { id: tableId! },
     { enabled: !!tableId }
   );
 

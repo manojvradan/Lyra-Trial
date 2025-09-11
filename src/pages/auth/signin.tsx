@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 // src/pages/auth/signin.tsx
 
 import type { GetServerSidePropsContext, InferGetServerSidePropsType, NextApiRequest, NextApiResponse  } from "next";

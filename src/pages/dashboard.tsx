@@ -13,7 +13,6 @@ import {
   FiHome,
   FiStar,
   FiShare2,
-  FiUsers,
   FiSearch,
   FiHelpCircle,
   FiBell,
@@ -31,6 +30,7 @@ import { HiOutlineSparkles } from "react-icons/hi";
 export default function Dashboard() {
   const { data: sessionData, status } = useSession();
   const router = useRouter();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [newBaseName, setNewBaseName] = useState("");
 
   // --- Page Protection Logic ---
@@ -52,12 +52,6 @@ export default function Dashboard() {
     },
   });
 
-  const handleCreateBase = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newBaseName.trim()) {
-      createBase.mutate({ name: newBaseName.trim() });
-    }
-  };
 
   if (status === "loading") {
     return (
