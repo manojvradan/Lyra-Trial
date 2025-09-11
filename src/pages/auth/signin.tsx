@@ -1,6 +1,6 @@
 // src/pages/auth/signin.tsx
 
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import type { GetServerSidePropsContext, InferGetServerSidePropsType, NextApiRequest, NextApiResponse  } from "next";
 import type { ClientSafeProvider } from "node_modules/next-auth/lib/client";
 import { getProviders, signIn } from "next-auth/react";
 import Image from "next/image";
@@ -68,7 +68,10 @@ export default function SignIn({ providers }: InferGetServerSidePropsType<typeof
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   // Use the central `auth` handler to get the session
-  const session = await auth(context.req, context.res);
+  const session = await auth(
+    context.req as NextApiRequest, 
+    context.res as NextApiResponse
+  );
 
   // If the user is already logged in, redirect them.
   if (session) {
